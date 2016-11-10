@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Photobooth</title>
+<script language="javascript" src="js/jquery-3.1.1.min.js"></script>
+<script language="javascript" src="js/jquery.playSound.js"></script>
+<script language="javascript" src="js/bigtext.js"></script>
+<script language="javascript" src="js/photobooth.js"></script>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/photobooth.css">
+</head>
+<body>
+<div id="text">
+	<span id="content"></span>
+</div>
+<audio style="display:none;" id="audio-shutter">
+	<source src="sounds/shutter.mp3" />
+	<source src="sounds/shutter.ogg" />
+	<embed src="sounds/shutter.mp3" hidden="true" autostart="false" loop="false" class="playSound" />
+</audio>
+<audio style="display:none;" id="audio-click">
+	<source src="sounds/click.mp3" />
+	<source src="sounds/click.ogg" />
+	<embed src="sounds/click.mp3" hidden="true" autostart="false" loop="false" class="playSound" />
+</audio>
+</body>
+</html>
