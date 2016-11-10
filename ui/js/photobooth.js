@@ -24,6 +24,10 @@ function startTakePhoto() {
 	}
 	debug("startTakePhoto()");
 	busy = true;
+
+	// Set batch name as date
+	batch = new Date().toISOString();
+
 	displayCountDown(function() {
 		takePhoto(1, function() {
 			displayCountDown(function() {
@@ -78,7 +82,7 @@ function displayCountDown(cb) {
 function takePhoto(id, cb) {
 	debug("takePhoto()");
 	$.get("/api/photo/" + batch + "/" + id, function(data) {
-
+		console.log("Returned : " + data);
 	});
 	playAudio("shutter");
 	setTimeout(cb, 1000);

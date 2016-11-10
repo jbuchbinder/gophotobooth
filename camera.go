@@ -39,7 +39,7 @@ func CapturePhoto(basepath, path, slug string) error {
 	out, err := RunWithTimeout([]string{
 		"/usr/bin/gphoto2",
 		"--capture-image-and-download",
-		fmt.Sprintf("--filename='%s/%s/%s.CR2'", basepath, path, slug),
+		fmt.Sprintf("--filename='%s/%s/%s.%s'", basepath, path, slug, *Extension),
 	}, 10)
 	log.Printf("CapturePhoto(): %s", out)
 	return err

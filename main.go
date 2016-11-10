@@ -45,11 +45,19 @@ func main() {
 */
 
 var (
+	Extension   = flag.String("extension", "CR2", "File extension for output files")
+	Debug       = flag.Bool("debug", false, "Debug mode")
 	Port        = flag.Int("port", 8888, "HTTP port")
 	StoragePath = flag.String("storage-path", "./storage", "Path to media storage")
 )
 
 func main() {
+	flag.Parse()
+
+	if !*Debug {
+		gin.SetMode(gin.ReleaseMode)
+	}
+
 	log.Printf("Initializing web services")
 	m := gin.New()
 	m.Use(gin.Logger())
@@ -57,7 +65,7 @@ func main() {
 	// Enable gzip compression
 	m.Use(gzip.Gzip(gzip.DefaultCompression))
 
-	//initApi(m)
+	initApi(m)
 
 	log.Print("[static] Initializing with local unbundled resources")
 	m.Use(static.Serve("/", static.LocalFile("ui", false)))
