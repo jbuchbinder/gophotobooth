@@ -3,6 +3,7 @@
 var busy = false;
 var debugEnabled = true;
 var batch = '';
+var delay = 2 * 1000; // 2 second delay
 
 $(document).ready(function() {
 	initDisplay();
@@ -74,9 +75,9 @@ function displayCountDown(cb) {
 			setTimeout(function() {
 				displayBig("CHEESE!");
 				cb();
-			}, 1200);
-		}, 1200);
-	}, 1200);
+			}, delay);
+		}, delay);
+	}, delay);
 }
 
 function takePhoto(id, cb) {
@@ -85,7 +86,7 @@ function takePhoto(id, cb) {
 		console.log("Returned : " + data);
 	});
 	playAudio("shutter");
-	setTimeout(cb, 1000);
+	setTimeout(cb, delay * 2);
 }
 
 function showThankYou() {

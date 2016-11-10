@@ -14,6 +14,10 @@ func RunWithTimeout(command []string, timeout int) (string, error) {
 		timeout = 30
 	}
 
+	if *Debug {
+		log.Printf("RunWithTimeout(): %#v", command)
+	}
+
 	var err error
 	torun := command[0]
 	args := command[1:]

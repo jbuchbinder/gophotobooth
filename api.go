@@ -5,6 +5,7 @@ import (
 	"github.com/kennygrant/sanitize"
 	"log"
 	"net/http"
+	"strings"
 )
 
 type stringarray []string
@@ -26,7 +27,7 @@ func apiTakePhoto(c *gin.Context) {
 		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
-	slug := sanitize.BaseName(c.Param("slug"))
+	slug := strings.Replace(sanitize.BaseName(c.Param("slug")), ":", "-", -1)
 
 	err := CapturePhoto(*StoragePath, batch, slug)
 	if err != nil {

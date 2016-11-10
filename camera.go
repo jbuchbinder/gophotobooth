@@ -35,11 +35,14 @@ import (
 )
 
 func CapturePhoto(basepath, path, slug string) error {
-	os.Mkdir(basepath+string(os.PathSeparator)+path, 0755)
+	if *Debug {
+		log.Printf("CapturePhoto(): Create %s", basepath+string(os.PathSeparator)+path)
+	}
+	os.MkdirAll(basepath+string(os.PathSeparator)+path, 0755)
 	out, err := RunWithTimeout([]string{
 		"/usr/bin/gphoto2",
 		"--capture-image-and-download",
-		fmt.Sprintf("--filename='%s/%s/%s.%s'", basepath, path, slug, *Extension),
+		fmt.Sprintf("--filename=%s/%s/%s.%s", basepath, path, slug, *Extension),
 	}, 10)
 	log.Printf("CapturePhoto(): %s", out)
 	return err
