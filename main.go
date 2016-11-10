@@ -45,7 +45,8 @@ func main() {
 */
 
 var (
-	Port = flag.Int("port", 8888, "HTTP port")
+	Port        = flag.Int("port", 8888, "HTTP port")
+	StoragePath = flag.String("storage-path", "./storage", "Path to media storage")
 )
 
 func main() {

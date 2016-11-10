@@ -1,27 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/kennygrant/sanitize"
-	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
-	"runtime"
-	"sort"
-	"strconv"
-	"strings"
-	"sync"
-	"syscall"
-	"time"
 )
 
 type stringarray []string
 
 func initApi(m *gin.Engine) {
 	g := m.Group("/api")
-	g.GET("/photo/:batch/:slug", apiTakePhoto))
+	g.GET("/photo/:batch/:slug", apiTakePhoto)
 }
 
 func apiTakePhoto(c *gin.Context) {
@@ -46,4 +36,3 @@ func apiTakePhoto(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, true)
 }
-
