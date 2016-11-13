@@ -4,12 +4,15 @@ var busy = false;
 var debugEnabled = true;
 var batch = '';
 var delay = 2 * 1000; // 2 second delay
+var keycode = 98; // 98 is for FS1-P model, 32 is a space
 
 $(document).ready(function() {
 	initDisplay();
 	$(document).keypress(function(e) {
-		if (e.which == 32) { // space
+		if (e.which == keycode) {
 			startTakePhoto();
+		} else {
+			console.log("Caught keycode == " + e.which);
 		}
 	});
 });
