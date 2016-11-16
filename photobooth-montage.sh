@@ -13,7 +13,8 @@
 SIZE=1000
 EXT="CR2"
 
-for d in $*; do
+for dir in $*; do
+	d=${dir//\/}
 	if [ ! -f ${d}-photobooth.jpg ]; then
 	REMOVELIST=""
 	FILES=""
